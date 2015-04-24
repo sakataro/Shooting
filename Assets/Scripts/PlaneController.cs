@@ -4,41 +4,50 @@ using System.Collections;
 public class PlaneController : MonoBehaviour {
 	// Use this for initialization
 
-	public Rigidbody bulletPrefab; // bullet prefab
 	public float fireRate = 0.1f;
 	private float nextFire = 0.0f;
-	private float BULLETSPEED = 150.0f;   // bullet's speed
-	private Vector3 FORWARD = new Vector3(0.0f,1.0f,0.0f); //forward -> y axe
-
+	Controller controller;
 
 	void Start () {
+		controller = GetComponent<Controller>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//move
-		float dx = Input.GetAxis("Horizontal");
-		float dy = Input.GetAxis("Vertical");
-		transform.Translate (dx, dy, 0.0f,Space.World);
-
-		//roll
-		float yRoll = -Input.GetAxis ("Horizontal") * 30;
-		transform.eulerAngles = new Vector3(0.0f,yRoll,0.0f);
+		Vector3 directon = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+		controller.Move (directon);
+		Clamp();
 
 		//fire at intervals of fireRate(seconds)
 		if (Input.GetButton("Fire1") && Time.time > nextFire){
 			nextFire = Time.time + fireRate;
-			FireBullet();
+			//get fire-dirrection and initial position
+			Transform barell = transform.Find("Barell");
+			controller.FireBullet(barell);
 		}
-	} 
-
-	void FireBullet(){
-		Vector3 shotPosition = transform.GetChild (transform.childCount-1).position; //get initial position of bullets
-		Rigidbody bullet = (Rigidbody)Instantiate (bulletPrefab,shotPosition,transform.rotation);
-		bullet.velocity = FORWARD * BULLETSPEED;
 	}
 
+	//limit position in the screen
+	void Clamp(){
+		//get bottom-left and right-up of the screen 
+		Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0,0,48));
+		Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1,1,48));
+
+		Vector3 pos = transform.position;
+
+		//change position in the screen
+		pos.x = Mathf.Clamp(pos.x,min.x,max.x);
+		pos.y = Mathf.Clamp(pos.y,min.y,max.y);
+
+		transform.position = pos;
+	}
+	
 	void OnTriggerEnter(){
+		controller.Explosion();
 		Destroy(gameObject);
 	}
+
+
+
 }

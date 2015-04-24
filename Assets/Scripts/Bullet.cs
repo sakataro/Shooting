@@ -5,11 +5,13 @@ public class Bullet: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Destroy(gameObject, 0.4f);	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (transform.position.y > 30 || transform.position.y < -30){
+			Destroy(gameObject);
+		}
 	}
 
 	void OnTriggerEnter(){

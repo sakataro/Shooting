@@ -2,31 +2,31 @@
 using System.Collections;
 
 public class EnemyController : MonoBehaviour {
-	public Rigidbody bulletPrefab; // bullet prefab
-	public float fireRate = 0.1f;
-	private float nextFire = 0.0f;
-	private float bulletSpeed = 150.0f; 
+	
+	Controller controller;
+	GameObject target; //this enemy fly to the target(plyer)
 
 	// Use this for initialization
 	void Start () {
-	
+		controller = GetComponent<Controller>();
+		target = GameObject.Find("Plane"); 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time > nextFire){
-			nextFire = Time.time + fireRate;
-			FireBullet();
-		}	
+		// calculate direction of the target
+		if (target != null){
+			Vector3 direction = target.transform.position-transform.position;
+			direction = direction.normalized;
+			//move in the direction of the target
+			controller.Move (direction);
+		}
 	}
 
 	void OnTriggerEnter(){
+		controller.Explosion();
 		Destroy(gameObject);
 	}
 
-	void FireBullet(){
-		Vector3 shotPosition = transform.GetChild (transform.childCount-1).position;
-		Rigidbody bullet = (Rigidbody)Instantiate (bulletPrefab,shotPosition,transform.rotation);
-		bullet.velocity = new Vector3(0.0f, -bulletSpeed/2, 0.0f); // forward = Y axe
-	}
+
 }
