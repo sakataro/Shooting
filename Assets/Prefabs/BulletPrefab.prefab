@@ -13,9 +13,9 @@ GameObject:
   - 23: {fileID: 2342512}
   - 54: {fileID: 5478872}
   - 114: {fileID: 11476368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletPrefab
-  m_TagString: Untagged
+  m_TagString: PlaneBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c271328a9dbc57446a0ad537041f6f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 100
 --- !u!135 &13540050
 SphereCollider:
   m_ObjectHideFlags: 1

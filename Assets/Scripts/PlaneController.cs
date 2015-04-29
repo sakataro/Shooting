@@ -6,10 +6,12 @@ public class PlaneController : MonoBehaviour {
 
 	public float fireRate = 0.1f;
 	private float nextFire = 0.0f;
+	private GameManager manager;
 	Controller controller;
 
 	void Start () {
 		controller = GetComponent<Controller>();
+		manager = FindObjectOfType<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -36,7 +38,7 @@ public class PlaneController : MonoBehaviour {
 
 		Vector3 pos = transform.position;
 
-		//change position in the screen
+		//limit of the movement in the screen
 		pos.x = Mathf.Clamp(pos.x,min.x,max.x);
 		pos.y = Mathf.Clamp(pos.y,min.y,max.y);
 
@@ -46,6 +48,7 @@ public class PlaneController : MonoBehaviour {
 	void OnTriggerEnter(){
 		controller.Explosion();
 		Destroy(gameObject);
+		manager.GameOver();
 	}
 
 

@@ -1,0 +1,27 @@
+Initialize engine version: 5.0.1f1 (5a2e8fe35a68)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.0]
+    Renderer: Intel(R) G45/G43 Express Chipset (ID=0x2e22)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.056 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\taro\Documents\Shooting\Shooting_Data\Managed\System.Core.dll (this message is harmless)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.858893 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 289.
+Total: 0.228924 ms (FindLiveObjects: 0.042431 ms CreateObjectMapping: 0.018478 ms MarkObjects: 0.160486 ms  DeleteObjects: 0.003421 ms)
+
