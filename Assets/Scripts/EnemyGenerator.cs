@@ -11,10 +11,12 @@ public class EnemyGenerator : MonoBehaviour {
 	private float enemy1Speed;
 	private float enemy2Time = 10.0f;
 	private GameManager manager;
+	private Score score;
 
 	// Use this for initialization
 	void Start () {
 		manager = FindObjectOfType<GameManager>();
+		score = FindObjectOfType<Score>();
 	}
 	
 	// Update is called once per frame
@@ -52,16 +54,16 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 
 	 void SetLevel(){
-		if(Time.time < 30.0f){
+		if(score.GetScore() < 100){
 			enemy1Speed = 0.1f;
 			enemy2Rate = 10.0f; 
-		}else if(Time.time < 60){
+		}else if(score.GetScore() < 200){
 			enemy1Speed = 0.2f;
 			enemy2Rate = 8.0f; 
-		}else if(Time.time <90){
+		}else if(score.GetScore() < 300){
 			enemy1Speed = 0.3f;
 			enemy2Rate = 6.0f;
-		}else if(Time.time < 120){
+		}else if(score.GetScore() < 400){
 			enemy1Speed = 0.4f;
 			enemy2Rate = 4.0f;
 		}else{ 

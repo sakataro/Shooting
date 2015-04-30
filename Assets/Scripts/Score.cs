@@ -22,4 +22,8 @@ public class Score : MonoBehaviour {
 	public void AddPoint(int point){
 		score += point;
 	}
+
+	public int GetScore(){
+		return score;
+	}
 }
